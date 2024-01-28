@@ -4,8 +4,9 @@
     <span class="right">
       <RouterLink to="/" class="no-underline">首页</RouterLink>
       <RouterLink to="/Tag" class="no-underline">标签</RouterLink>
-      <RouterLink to="/Category" class="no-underline">分类</RouterLink>
       <RouterLink to="/Timeline" class="no-underline">时间</RouterLink>
+      <RouterLink to="/Project" class="no-underline">项目</RouterLink>
+      <RouterLink to="/About" class="no-underline">关于</RouterLink>
     </span>
   </div>
 </template>
