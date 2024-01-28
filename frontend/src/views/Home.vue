@@ -33,6 +33,7 @@ import { ref } from "vue";
 }
 #name {
   font-size: 60px;
+  font-family: Arial;
 }
 #word {
   margin-top: 20px;
