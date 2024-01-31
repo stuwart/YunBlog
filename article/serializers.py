@@ -2,14 +2,17 @@ from rest_framework import serializers
 from .models import *
 
 
+class ArticleTagSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name='tag-detail')
+
+    class Meta:
+        model = Tag
+        fields = '__all__'
+
+
 class ArticleBaseSerializer(serializers.HyperlinkedModelSerializer):
     # url = serializers.HyperlinkedIdentityField(view_name='article-detail')
-    tags = serializers.SlugRelatedField(
-        queryset=Tag.objects.all(),
-        many=True,
-        required=False,
-        slug_field='name'
-    )
+    tags = ArticleTagSerializer(many=True)
 
     class Meta:
         model = Article
@@ -17,8 +20,6 @@ class ArticleBaseSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ArticleListSerializer(ArticleBaseSerializer):
-
-
     class Meta:
         model = Article
         fields = '__all__'
@@ -30,16 +31,6 @@ class ArticleDetailSerializer(ArticleBaseSerializer):
         model = Article
         fields = '__all__'
 
-
-# 嵌套序列化器
-class TagArticleSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='article-detail')
-
-    class Meta:
-        model = Article
-        fields = '__all__'
-
-
 class TagListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -48,7 +39,7 @@ class TagListSerializer(serializers.ModelSerializer):
 
 
 class TagDetailSerializer(serializers.ModelSerializer):
-    articles = TagArticleSerializer(many=True, read_only=True)
+    articles = ArticleListSerializer(many=True, read_only=True)
 
     class Meta:
         model = Tag
