@@ -1,31 +1,25 @@
 from django.shortcuts import render
 from rest_framework import views, serializers, viewsets
 from rest_framework import generics
-from article.models import *
-from article.serializers import *
+from article.models import Tag, Article
+from .serializers import *
 
 
-# Create your views here.
-
-class TagList(generics.ListCreateAPIView):
+class TagListView(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagListSerializer
 
 
-class TagDetail(generics.RetrieveUpdateDestroyAPIView):
+class TagDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagDetailSerializer
 
 
-class ArticleViewSet(viewsets.ModelViewSet):
+class ArticleListView(generics.ListCreateAPIView):
     queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
+    serializer_class = ArticleListSerializer
 
-    def perform_create(self, serializer):  # 在真正保存前执行此步骤
-        serializer.save(author=self.request.user)
 
-    def get_serializer_class(self):
-        if self.action == 'list':
-            return ArticleSerializer
-        else:
-            return ArticleDetailSerializer
+class ArticleDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleDetailSerializer

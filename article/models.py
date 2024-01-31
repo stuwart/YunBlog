@@ -6,7 +6,7 @@ from markdown import Markdown
 class Tag(models.Model):
     name = models.CharField(max_length=30)
 
-    class meta:
+    class Meta:
         ordering = ['-id']
 
     def __str__(self):
