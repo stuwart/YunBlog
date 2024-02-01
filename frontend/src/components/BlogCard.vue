@@ -34,5 +34,6 @@
   width: 800px;
   height: 300px;
   margin-top: 16px;
+  margin: auto;
 }
 </style>

@@ -3,7 +3,6 @@ import Home from "@/views/Home.vue"
 import Tag from "@/views/Tag.vue"
 import Project from '@/views/Project.vue'
 import Timeline from '@/views/Timeline.vue'
-import About from '@/views/About.vue'
 
 const routes = [
   {
@@ -21,10 +20,6 @@ const routes = [
   {
     path:"/Timeline",
     component:Timeline,
-  },
-  {
-    path:"/About",
-    component:About,
   }
 ]
 

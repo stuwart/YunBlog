@@ -1,10 +1,13 @@
 <template>
   <Header></Header>
+  <TagList></TagList>
 </template>
   
-  <script setup>
+<script setup>
 import Header from "@/components/Header.vue";
+import TagList from "@/components/TagList.vue";
 </script>
   
-  <style>
+<style lang="scss" scoped>
+
 </style>
