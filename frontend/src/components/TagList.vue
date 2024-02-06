@@ -1,42 +1,34 @@
 <template>
   <div class="left">
     <div class="title">标签</div>
-    <div v-for="item in tags" :key="item.id">
-      <div class="tagname">
-        <a href="#">{{ item.name }}({{ item.num }})</a>
-      </div>
+    <div v-for="tag in tags" :key="tag.id">
+      {{ tag.name }}
     </div>
     <el-divider direction="vertical" />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
-const tags = [
-  {
-    name: "1111",
-    url: "http:111",
-    num: 4,
-  },
-  {
-    name: "1111",
-    url: "http:111",
-    num: 3,
-  },
-  {
-    name: "1111",
-    url: "http:111",
-    num: 2,
-  },
-  {
-    name: "1111",
-    url: "http:111",
-    num: 6,
-  },
-];
+// 定义一个响应式变量来存储标签列表
+const tags = ref([]);
 
-let len = tags.length;
+// 定义获取标签列表的方法
+const fetchTags = async () => {
+  try {
+    const response = await axios.get('/api/tag/');
+    tags.value = response.data;
+    console.log(tags)
+  } catch (error) {
+    console.error('There was an error fetching the tags:', error);
+  }
+};
+
+// 在组件挂载后调用fetchTags方法
+onMounted(fetchTags);
+
 </script>
 
 <style lang="scss" scoped>
@@ -66,6 +58,5 @@ a:hover {
   font-size: 20px;
   background-color: grey;
   padding: 5px; /* 添加一些内边距以便观察到阴影效果 */
-  
 }
 </style>

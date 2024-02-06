@@ -12,6 +12,7 @@ from .models import *
 
 class ArticleBaseSerializer(serializers.HyperlinkedModelSerializer):
     # url = serializers.HyperlinkedIdentityField(view_name='article-detail')
+    id = serializers.IntegerField(read_only=True)
     tags = serializers.SlugRelatedField(
         queryset=Tag.objects.all(),
         many=True,
