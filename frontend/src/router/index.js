@@ -3,7 +3,6 @@ import Home from "@/views/Home.vue"
 import Tag from "@/views/Tag.vue"
 import Project from '@/views/Project.vue'
 import Timeline from '@/views/Timeline.vue'
-import TagArticleVue from '@/components/TagArticle.vue'
 const routes = [
   {
     path: '/',
@@ -16,12 +15,6 @@ const routes = [
   {
     path: "/Tag",
     component: Tag,
-    children: [
-      {
-        path: '/:id',
-        component: TagArticleVue
-      }
-    ]
   },
   {
     path: "/Timeline",

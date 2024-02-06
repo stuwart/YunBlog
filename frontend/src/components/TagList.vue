@@ -24,6 +24,7 @@ const fetchTags = async () => {
 
     for(let i = 0;i<tags.results.length;i++){
       let url = '/api/tag/'+tags.results[i].id+'/';
+      
     }
   } catch (error) {
     console.error('There was an error fetching the tags:', error);
