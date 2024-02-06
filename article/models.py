@@ -21,6 +21,17 @@ class Article(models.Model):
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
 
+    def get_md(self):
+        md = Markdown(
+            extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+                'markdown.extensions.toc',
+            ]
+        )
+        md_body = md.convert(self.body)
+        # toc 是渲染后的目录
+        return md_body, md.toc
     class Meta:
         ordering = ['-updated']
 

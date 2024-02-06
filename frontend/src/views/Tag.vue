@@ -2,7 +2,6 @@
   <Header></Header>
   <div class="main">
     <TagList></TagList>
-    <TagArticle></TagArticle>
   </div>
 </template>
   

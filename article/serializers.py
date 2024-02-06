@@ -59,6 +59,16 @@ class ArticleListSerializer(ArticleBaseSerializer):
 
 
 class ArticleDetailSerializer(ArticleBaseSerializer):
+    # 渲染后的正文
+    body_html = serializers.SerializerMethodField()
+    # 渲染后的目录
+    toc_html = serializers.SerializerMethodField()
+
+    def get_body_html(self, obj):
+        return obj.get_md()[0]
+
+    def get_toc_html(self, obj):
+        return obj.get_md()[1]
     class Meta:
         model = Article
         fields = '__all__'

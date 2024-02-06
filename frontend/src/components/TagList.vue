@@ -1,7 +1,7 @@
 <template>
   <div class="left">
     <div class="title">标签</div>
-    <div v-for="tag in tags" :key="tag.id">
+    <div v-for="tag in tags.results" :key="tag.id">
       {{ tag.name }}
     </div>
     <el-divider direction="vertical" />
@@ -20,7 +20,11 @@ const fetchTags = async () => {
   try {
     const response = await axios.get('/api/tag/');
     tags.value = response.data;
-    console.log(tags)
+    console.log(tags);
+
+    for(let i = 0;i<tags.results.length;i++){
+      let url = '/api/tag/'+tags.results[i].id+'/';
+    }
   } catch (error) {
     console.error('There was an error fetching the tags:', error);
   }

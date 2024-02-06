@@ -27,7 +27,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8080', // 后端服务的实际地址
+        target: 'http://127.0.0.1:8000', // 后端服务的实际地址
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
