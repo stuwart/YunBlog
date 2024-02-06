@@ -3,9 +3,9 @@
     <span class="word"> 一路向前 </span>
     <span class="right">
       <RouterLink to="/" class="no-underline">首页</RouterLink>
-      <RouterLink to="/Tag" class="no-underline">标签</RouterLink>
-      <RouterLink to="/Timeline" class="no-underline">归档</RouterLink>
-      <RouterLink to="/Project" class="no-underline">项目</RouterLink>
+      <RouterLink to="/tag" class="no-underline">标签</RouterLink>
+      <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
+      <RouterLink to="/project" class="no-underline">项目</RouterLink>
     </span>
   </div>
   <div class="empty" />
@@ -25,9 +25,13 @@ import "@/assets/base.css";
 <style lang="scss" scoped>
 .no-underline {
   text-decoration: none;
+  
 }
 .no-underline:visited {
   color: #590def;
+}
+.no-underline:active {
+  filter: brightness(1.2); 
 }
 .head {
   position: relative;

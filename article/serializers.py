@@ -74,8 +74,12 @@ class ArticleDetailSerializer(ArticleBaseSerializer):
         fields = '__all__'
 
 
-class TagListSerializer(serializers.ModelSerializer):
+class TagListSerializer(serializers.HyperlinkedModelSerializer):
+    cnt = serializers.SerializerMethodField()
 
+    def get_cnt(self, obj):
+        # 返回关联到这个Tag的文章数
+        return obj.articles.count()
     class Meta:
         model = Tag
         fields = '__all__'
