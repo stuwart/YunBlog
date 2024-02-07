@@ -1,8 +1,6 @@
 <template>
   <el-space wrap direction="vertical" style="width: 100%" :fill-ratio="120">
     <el-card
-      v-for="i in 5"
-      :key="i"
       class="box-card"
       style="border-radius: 40px"
       shadow="hover"
@@ -13,27 +11,32 @@
           style="display: flex; justify-content: space-between"
         >
           <span>
-            <span>Card name</span>
-            <span style="margin-left: 20px">biaoqian</span>
+            <span>{{name}}</span>
+            <span style="margin-left: 20px">{{ tags }}</span>
           </span>
-          <span style="margin-right: 20px">Date</span>
+          <span style="margin-right: 20px">{{date}}</span>
         </div>
       </template>
-      <div v-for="o in 3" :key="o" class="text item">
-        {{ "List item " + o }}
+      <div class="text-item">
+        {{ body }}
       </div>
     </el-card>
   </el-space>
 </template>
 
 <script setup>
+defineProps(['name','tags','date','body'])
 </script>
 
 <style lang="scss" scoped>
-.el-card {
+.box-card {
   width: 800px;
   height: 300px;
-  margin-top: 16px;
-  margin: auto;
+  
+}
+.text-item{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>

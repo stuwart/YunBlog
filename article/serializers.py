@@ -83,6 +83,7 @@ class TagListSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
         fields = '__all__'
+        # ordering = ["-cnt"]
         # fields = ['id', 'name', 'url']
 
 

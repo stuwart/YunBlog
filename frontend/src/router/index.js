@@ -13,11 +13,11 @@ const routes = [
     component: Project,
   },
   {
-    path: "/Tag",
+    path: "/tag",
     component: Tag,
   },
   {
-    path: "/Timeline",
+    path: "/timeline",
     component: Timeline,
   }
 ]

@@ -3,13 +3,12 @@
     <div class="left">
       <div class="title">标签</div>
       <div v-for="tag in tags.results" :key="tag.id">
-        <a href="{{ tag.url }}" class="tagname" @click="showarticles"
-          >{{ tag.name }}({{ tag.cnt }}) </a
-        >
+        <a href="{{ tag.url }}" class="tagname" @click.prevent="showarticles"
+          >{{ tag.name }}({{ tag.cnt }})
+        </a>
       </div>
-      <el-divider direction="vertical"  class="divider"/>
+      <el-divider direction="vertical" class="divider" />
     </div>
-    
   </div>
 </template>
 
@@ -34,8 +33,10 @@ const fetchTags = async () => {
 // 在组件挂载后调用fetchTags方法
 onMounted(fetchTags);
 
-async function showarticles(){
-
+//点击tag后，获取对应url
+function showarticles(event) {
+  const url = event.target.href;
+  console.log("url:", url);
 }
 </script>
 
@@ -49,7 +50,7 @@ async function showarticles(){
   position: absolute;
   left: 20%;
   margin-top: 20px;
-  width:8%;
+  width: 8%;
 }
 
 .tagname {
@@ -57,11 +58,10 @@ async function showarticles(){
   font-size: 16px;
   text-decoration-line: none;
   transition: all 0.3s ease;
-  
+
   border-radius: 12px;
   display: flex;
   justify-content: center;
-
 }
 
 .tagname:hover {
@@ -71,10 +71,10 @@ async function showarticles(){
   padding: 5px; /* 添加一些内边距以便观察到阴影效果 */
 }
 
-.divider{
-  position:absolute;
-  left:150px;
-  top:10px;
+.divider {
+  position: absolute;
+  left: 150px;
+  top: 10px;
   height: 200px;
 }
 </style>
