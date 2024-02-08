@@ -2,23 +2,13 @@
   <Header />
   <div class="main">
     <el-timeline>
-      <el-timeline-item timestamp="2018/4/12" placement="top">
-        <el-card>
-          <h4>Update Github template</h4>
-          <p>Tom committed 2018/4/12 20:46</p>
-        </el-card>
-      </el-timeline-item>
-      <el-timeline-item timestamp="2018/4/3" placement="top">
-        <el-card>
-          <h4>Update Github template</h4>
-          <p>Tom committed 2018/4/3 20:46</p>
-        </el-card>
-      </el-timeline-item>
-      <el-timeline-item timestamp="2018/4/2" placement="top">
-        <el-card>
-          <h4>Update Github template</h4>
-          <p>Tom committed 2018/4/2 20:46</p>
-        </el-card>
+      <el-timeline-item
+        v-for="item in events"
+        :key="item.id"
+        :timestamp="item.created"
+        placement="top"
+      >
+        <h3>#{{ item.title }}</h3>
       </el-timeline-item>
     </el-timeline>
   </div>
@@ -26,24 +16,21 @@
     
 <script setup>
 import Header from "@/components/Header.vue";
-const activities = [
-  {
-    content: "Event start",
-    timestamp: "2018-04-15",
-  },
-  {
-    content: "Approved",
-    timestamp: "2018-04-13",
-  },
-  {
-    content: "Success",
-    timestamp: "2018-04-11",
-  },
-  {
-    content: "First",
-    timestamp: "2024-02-01",
-  },
-];
+import axios from "axios";
+import { onMounted, ref } from "vue";
+
+const events = ref([]);
+
+const getEvents = async () => {
+  try {
+    const response = await axios.get("/api/article/");
+    events.value = response.data.results;
+  } catch (error) {
+    console.log("存在错误：", error);
+  }
+};
+
+onMounted(getEvents);
 </script>
     
 <style lang ="scss" scoped>
