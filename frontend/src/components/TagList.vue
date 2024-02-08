@@ -56,6 +56,7 @@ function showarticles(event) {
 .tagname {
   margin: 16px;
   font-size: 16px;
+  color:#590def;
   text-decoration-line: none;
   transition: all 0.3s ease;
 
@@ -67,7 +68,8 @@ function showarticles(event) {
 .tagname:hover {
   // 变大
   font-size: 18px;
-  background-color: grey;
+  
+  background-color: rgb(220, 192, 220);
   padding: 5px; /* 添加一些内边距以便观察到阴影效果 */
 }
 

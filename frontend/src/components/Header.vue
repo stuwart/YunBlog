@@ -25,7 +25,11 @@ import "@/assets/base.css";
 <style lang="scss" scoped>
 .no-underline {
   text-decoration: none;
-  
+  border-radius: 4px;
+ 
+}
+.no-underline:hover{
+  background-color: rgb(180, 180, 180);
 }
 .no-underline:visited {
   color: #590def;
@@ -42,6 +46,7 @@ import "@/assets/base.css";
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
   .word {
     margin-left: 40px;
   }

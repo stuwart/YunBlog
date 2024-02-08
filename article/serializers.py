@@ -13,6 +13,8 @@ from .models import *
 class ArticleBaseSerializer(serializers.HyperlinkedModelSerializer):
     # url = serializers.HyperlinkedIdentityField(view_name='article-detail')
     id = serializers.IntegerField(read_only=True)
+    created = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
+    updated = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     tags = serializers.SlugRelatedField(
         queryset=Tag.objects.all(),
         many=True,
@@ -59,6 +61,9 @@ class ArticleListSerializer(ArticleBaseSerializer):
 
 
 class ArticleDetailSerializer(ArticleBaseSerializer):
+
+
+
     # 渲染后的正文
     body_html = serializers.SerializerMethodField()
     # 渲染后的目录
