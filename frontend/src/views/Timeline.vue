@@ -7,6 +7,7 @@
         :key="item.id"
         :timestamp="item.created"
         placement="top"
+        class="node"
       >
         <h3>#{{ item.title }}</h3>
       </el-timeline-item>
@@ -34,6 +35,11 @@ onMounted(getEvents);
 </script>
     
 <style lang ="scss" scoped>
+.node{
+  color:purple;
+}
+
+
 .main {
   position: relative;
   top: 60px;
