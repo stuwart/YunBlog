@@ -20,6 +20,7 @@
         :date="item.created"
         :body="item.body"
         :tags="item.tags"
+        :url="item.url"
         class="card"
       ></BlogCard>
     </div>

@@ -1,5 +1,11 @@
 <template>
-  <el-space wrap direction="vertical" style="width: 100%" :fill-ratio="120" >
+  <el-space
+    wrap
+    direction="vertical"
+    style="width: 100%"
+    :fill-ratio="120"
+    @click.prevent="openArticle"
+  >
     <el-card class="box-card" style="border-radius: 40px" shadow="hover">
       <template #header>
         <div
@@ -21,9 +27,10 @@
 </template>
 
 <script setup>
-defineProps(["name", "tags", "date", "body"]);
-
-
+const props = defineProps(["name", "tags", "date", "body", "url"]);
+const openArticle = () => {
+  console.log(props.url);
+};
 </script>
 
 <style lang="scss" scoped>

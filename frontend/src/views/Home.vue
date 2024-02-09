@@ -8,6 +8,7 @@
     :date="item.created"
     :body="item.body"
     :tags="item.tags"
+    :url="item.url"
     class="card"
   ></BlogCard>
 </template>
@@ -30,12 +31,6 @@ const fetcharticles = async () => {
 };
 onMounted(fetcharticles);
 
-var elements = document.getElementsByClassName('clickable-div');
-if (elements.length > 0) {
-  elements[0].addEventListener('click', function() {
-    window.location.href = 'http://baidu.com';
-  });
-}
 </script>
 
 <style lang="scss" scoped>

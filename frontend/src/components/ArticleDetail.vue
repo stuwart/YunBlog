@@ -40,20 +40,18 @@ const tags = ref([]);
 
 
 <style lang="scss" scoped>
-
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
- 
 }
-.no-underline:hover{
+.no-underline:hover {
   background-color: rgb(180, 180, 180);
 }
 .no-underline:visited {
   color: #590def;
 }
 .no-underline:active {
-  filter: brightness(1.2); 
+  filter: brightness(1.2);
 }
 .head {
   position: relative;
@@ -64,7 +62,7 @@ const tags = ref([]);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   .word {
     margin-left: 40px;
   }

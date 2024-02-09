@@ -1,6 +1,7 @@
 <template>
   <div class="foot">
     <div class="icon">
+        <img src="../../public/bilibili.png">
         
     </div>
     <div class="info">
@@ -11,6 +12,9 @@
 </template>
 
 <script setup>
+
+
+
 </script>
 
 <style lang="scss" scoped>
