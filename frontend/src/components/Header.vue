@@ -11,10 +11,9 @@
   <div class="empty" />
   <div class="intro">
     <span id="name">赟</span>
-    <span id="word">很高兴遇见你</span>  
+    <span id="word">很高兴遇见你</span>
   </div>
   <el-divider />
-  
 </template>
   
 <script setup>
@@ -26,16 +25,15 @@ import "@/assets/base.css";
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
- 
 }
-.no-underline:hover{
+.no-underline:hover {
   background-color: rgb(180, 180, 180);
 }
 .no-underline:visited {
   color: #590def;
 }
 .no-underline:active {
-  filter: brightness(1.2); 
+  filter: brightness(1.2);
 }
 .head {
   position: relative;
@@ -46,7 +44,7 @@ import "@/assets/base.css";
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   .word {
     margin-left: 40px;
   }
@@ -67,7 +65,6 @@ import "@/assets/base.css";
   width: 100%;
   height: 60px;
   background-color: #f4f4f4;
-  
 }
 #name {
   font-size: 40px;
