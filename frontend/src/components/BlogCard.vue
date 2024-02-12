@@ -4,7 +4,7 @@
     direction="vertical"
     style="width: 100%"
     :fill-ratio="120"
-    @click.prevent="openArticle"
+    @click="openArticle"
   >
     <el-card class="box-card" style="border-radius: 40px" shadow="hover">
       <template #header>
@@ -27,10 +27,12 @@
 </template>
 
 <script setup>
-const props = defineProps(["name", "tags", "date", "body", "url"]);
+import router from '@/router';
+const props = defineProps(["name", "tags", "date", "body", "url","id"]);
 const openArticle = () => {
-  console.log(props.url);
-};
+  const toUrl = '/article/'+props.id + '/';
+  router.push(toUrl);
+}
 </script>
 
 <style lang="scss" scoped>

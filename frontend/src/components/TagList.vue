@@ -21,6 +21,7 @@
         :body="item.body"
         :tags="item.tags"
         :url="item.url"
+        :id = "item.id"
         class="card"
       ></BlogCard>
     </div>

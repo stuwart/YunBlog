@@ -9,18 +9,21 @@
         <RouterLink to="/project" class="no-underline">项目</RouterLink>
       </span>
     </div>
-    <el-container>
-      <el-aside width="200px">{{ tags }}</el-aside>
-      <el-main>
-        <div id="title">
-          <h1></h1>
-        </div>
-
-        <div id="body">
-          {{ body }}
-        </div>
-      </el-main>
-    </el-container>
+    <div class="contain">
+      <div class="back" @click="backTo">
+        后退
+      </div>
+      <div class="toc">
+        <h3>目录</h3>
+        <div v-html="article.toc_html"></div>
+      </div>
+      <div class="content">
+        <div class="title">{{ article.title }}</div>
+        <div class="time">{{ article.created }}</div>
+        <div class="tag">{{ article.tags }}</div>
+        <div v-html="article.body_html" class="zhengwen"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,22 +40,29 @@ const articleId = ref(route.params.id);
 
 const url = "/api/article/" + articleId.value + "/";
 
+console.log(url);
+
 const fetchArticleDetail = async () => {
   try {
-    const response = axios.get(url);
+    const response = await axios.get(url);
     article.value = response.data;
-    console.log(response);
+    console.log(article);
   } catch (error) {
     console.error("存在错误：", error);
   }
 };
 
 onMounted(fetchArticleDetail);
+
+const backTo = () => {
+  router.go(-1);
+}
 </script>
 
 
-
 <style lang="scss" scoped>
+
+
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
