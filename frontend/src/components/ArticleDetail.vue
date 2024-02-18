@@ -10,9 +10,8 @@
       </span>
     </div>
     <div class="contain">
-      <div class="back" @click="backTo">
-        后退
-      </div>
+      <img src="../../public/back.png" class="back" @click="backTo" style="width: 20px;" alt="后退">
+        
       <div class="toc">
         <h3>目录</h3>
         <div v-html="article.toc_html"></div>
@@ -56,13 +55,17 @@ onMounted(fetchArticleDetail);
 
 const backTo = () => {
   router.go(-1);
-}
+};
 </script>
 
 
 <style lang="scss" scoped>
-
-
+.back{
+  cursor: pointer;
+  background-color: antiquewhite;
+  padding: 10px;
+  border-radius: 12px;
+}
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
