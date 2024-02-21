@@ -2,14 +2,6 @@ from rest_framework import serializers
 from .models import *
 
 
-# class ArticleTagSerializer(serializers.ModelSerializer):
-#     url = serializers.HyperlinkedIdentityField(view_name='tag-detail')
-#
-#     class Meta:
-#         model = Tag
-#         fields = '__all__'
-
-
 class ArticleBaseSerializer(serializers.HyperlinkedModelSerializer):
     # url = serializers.HyperlinkedIdentityField(view_name='article-detail')
     id = serializers.IntegerField(read_only=True)

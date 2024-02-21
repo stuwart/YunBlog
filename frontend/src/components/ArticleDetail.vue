@@ -9,9 +9,8 @@
         <RouterLink to="/project" class="no-underline">项目</RouterLink>
       </span>
     </div>
+    <img src="../../public/back.png" class="back" @click="backTo" style="width: 20px;" alt="后退">
     <div class="contain">
-      <img src="../../public/back.png" class="back" @click="backTo" style="width: 20px;" alt="后退">
-        
       <div class="toc">
         <h3>目录</h3>
         <div v-html="article.toc_html"></div>
@@ -60,6 +59,34 @@ const backTo = () => {
 
 
 <style lang="scss" scoped>
+.contain{
+  display: flex;
+}
+.toc{
+  width: 20%;
+  margin-left: 100px;
+}
+
+.content{
+  width: 80%;
+  margin-left: 100px;
+  .title{
+    font-size: 24px;
+  }
+  .time{
+    font-size: 18px;
+  }
+  .tag{
+    font-size: 16px;
+  }
+  .zhengwen{
+    font-size: 16px;;
+  }
+}
+
+
+
+
 .back{
   cursor: pointer;
   background-color: antiquewhite;
@@ -70,6 +97,9 @@ const backTo = () => {
   text-decoration: none;
   border-radius: 4px;
 }
+
+
+
 .no-underline:hover {
   background-color: rgb(180, 180, 180);
 }
@@ -99,4 +129,7 @@ const backTo = () => {
     justify-content: space-around;
   }
 }
+
+
+
 </style>
