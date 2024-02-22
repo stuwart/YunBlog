@@ -9,16 +9,24 @@
         <RouterLink to="/project" class="no-underline">项目</RouterLink>
       </span>
     </div>
-    <img src="../../public/back.png" class="back" @click="backTo" style="width: 20px;" alt="后退">
+
     <div class="contain">
       <div class="toc">
+        <img
+          src="../../public/back.png"
+          class="back"
+          @click="backTo"
+          style="width: 20px"
+          alt="后退"
+        />
         <h3>目录</h3>
         <div v-html="article.toc_html"></div>
       </div>
+      <el-divider direction="vertical" class="divider" />
       <div class="content">
         <div class="title">{{ article.title }}</div>
-        <div class="time">{{ article.created }}</div>
         <div class="tag">{{ article.tags }}</div>
+        <div class="time">{{ article.created }}</div>
         <div v-html="article.body_html" class="zhengwen"></div>
       </div>
     </div>
@@ -28,7 +36,6 @@
 <script setup>
 import router from "@/router";
 import { onMounted, ref } from "vue";
-import Footer from "./Footer.vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 
@@ -59,46 +66,68 @@ const backTo = () => {
 
 
 <style lang="scss" scoped>
-.contain{
+.divider {
+  position: absolute;
+  left: 360px;
+  top: 100px;
+  height: 800px;
+}
+.contain {
   display: flex;
 }
-.toc{
+.toc {
   width: 20%;
-  margin-left: 100px;
+  margin-left: 200px;
+  h3{
+    display: inline-block;
+    position: relative;
+    right:80px;
+  }
+  .back {
+    display: inline-block;
+    cursor: pointer;
+    background-color: f4f4f4;
+    padding: 10px;
+    border-radius: 12px;
+    position: relative;
+    top:14px;
+    right:120px;
+  }
 }
 
-.content{
+.content {
   width: 80%;
-  margin-left: 100px;
-  .title{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
     font-size: 24px;
+    margin: auto;
+    justify-content: center;
   }
-  .time{
+
+  .tag {
+    margin-top: 20px;
+    font-size: 16px;
+    margin: auto;
+    justify-content: center;
+  }
+  .time {
     font-size: 18px;
+    margin-left: auto;
+    margin-right: 100px;
   }
-  .tag{
+
+  .zhengwen {
     font-size: 16px;
   }
-  .zhengwen{
-    font-size: 16px;;
-  }
 }
 
-
-
-
-.back{
-  cursor: pointer;
-  background-color: antiquewhite;
-  padding: 10px;
-  border-radius: 12px;
-}
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
 }
-
-
 
 .no-underline:hover {
   background-color: rgb(180, 180, 180);
@@ -129,7 +158,4 @@ const backTo = () => {
     justify-content: space-around;
   }
 }
-
-
-
 </style>
