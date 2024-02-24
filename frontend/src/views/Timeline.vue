@@ -1,5 +1,5 @@
 <template>
-  <Header />
+ <Header></Header>
   <div class="main">
     <el-timeline>
       <el-timeline-item
@@ -15,12 +15,12 @@
       </el-timeline-item>
     </el-timeline>
   </div>
-  <Footer></Footer>
+ 
 </template>
     
 <script setup>
 import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
+
 import axios from "axios";
 import { onMounted, ref } from "vue";
 

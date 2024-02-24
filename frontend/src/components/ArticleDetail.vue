@@ -13,7 +13,7 @@
     <div class="contain">
       <div class="toc">
         <img
-          src="../../public/back.png"
+          src="/back.png"
           class="back"
           @click="backTo"
           style="width: 20px"
@@ -74,6 +74,8 @@ const backTo = () => {
 }
 .contain {
   display: flex;
+  position: relative;
+  top:30px;
 }
 .toc {
   width: 20%;

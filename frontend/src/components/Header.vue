@@ -2,6 +2,7 @@
   <div class="head">
     <span class="word"> 一路向前 </span>
     <span class="right">
+      <img src="/search.png" alt="搜索" />
       <RouterLink to="/" class="no-underline">首页</RouterLink>
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
       <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
@@ -44,7 +45,11 @@ import "@/assets/base.css";
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  img {
+    
+    width: 24px;
+    height: 24px;
+  }
   .word {
     margin-left: 40px;
   }

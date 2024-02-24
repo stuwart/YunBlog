@@ -4,10 +4,28 @@ import Header from "./components/Header.vue";
 </script>
 
 <template>
-  <RouterView />
+  <div id="container">
+   
+    <div id="content">
+      <RouterView />
+    </div>
+    <div id="footer">
+      <Footer></Footer>
+    </div>
+  </div>
 </template>
 
-<style>
+<style lang="scss">
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#content {
+  flex: 1;
+}
+
+
 @font-face {
   font-family: alibaba;
   src: url("@/assets/font/AlibabaPuHuiTi-3-55-Regular.ttf");
@@ -24,7 +42,7 @@ body,
   height: auto;
   margin: 0;
   padding: 0;
-  font-family: enalibaba,alibaba;
+  font-family: enalibaba, alibaba;
 }
 html {
   background-color: #f4f4f4;
