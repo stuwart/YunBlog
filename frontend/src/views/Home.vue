@@ -12,10 +12,12 @@
     :id = "item.id"
     class="card"
   ></BlogCard>
+  <Footer></Footer>
 </template>
 
 <script setup>
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 import BlogCard from "@/components/BlogCard.vue";
 import { onMounted, ref } from "vue";
 import axios from "axios";
