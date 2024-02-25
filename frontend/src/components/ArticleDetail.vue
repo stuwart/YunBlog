@@ -94,6 +94,7 @@ const backTo = () => {
     position: relative;
     top:14px;
     right:120px;
+    color: #590def;
   }
 }
 

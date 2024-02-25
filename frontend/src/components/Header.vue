@@ -3,13 +3,17 @@
     <span class="word"> 一路向前 </span>
     <span class="right">
       <div class="m-4 search">
-        <el-cascader class="searchbox" placeholder="请搜索关键词" :options="options" filterable />
+        <el-cascader
+          class="searchbox"
+          placeholder="请搜索关键词"
+          :options="options"
+          filterable
+        />
       </div>
-
       <RouterLink to="/" class="no-underline">首页</RouterLink>
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
       <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
-      <RouterLink to="/project" class="no-underline">项目</RouterLink>
+      <RouterLink to="/project" class="no-underline">关于</RouterLink>
     </span>
   </div>
   <div class="empty" />
@@ -30,9 +34,8 @@ import "@/assets/base.css";
   display: flex; /* 添加flexbox布局 */
   align-items: center; /* 在交叉轴（此处为垂直轴）上居中对齐子项 */
   justify-content: center; /* 可选：在主轴（此处为水平轴）上居中对齐子项，如果你也想水平居中的话 */
-  /* 你可能需要设置一个高度，除非它已经通过内容或其他方式隐式设置 */
 }
-.el-cascader{
+.el-cascader {
   border-radius: 12px;
 }
 .no-underline {
@@ -76,6 +79,7 @@ import "@/assets/base.css";
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100px;
 }
 .empty {
   width: 100%;
@@ -88,8 +92,8 @@ import "@/assets/base.css";
   margin: auto;
 }
 #word {
-  margin-top: 20px;
-  font-size: 20px;
+  font-size: 16px;
   margin: auto;
+  color: #999;
 }
 </style>

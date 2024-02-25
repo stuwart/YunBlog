@@ -5,7 +5,6 @@ import Header from "./components/Header.vue";
 
 <template>
   <div id="container">
-   
     <div id="content">
       <RouterView />
     </div>
@@ -24,8 +23,9 @@ import Header from "./components/Header.vue";
 #content {
   flex: 1;
 }
-
-
+#footer{
+  margin-top: auto;
+}
 @font-face {
   font-family: alibaba;
   src: url("@/assets/font/AlibabaPuHuiTi-3-55-Regular.ttf");
