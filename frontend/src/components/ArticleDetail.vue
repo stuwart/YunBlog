@@ -70,7 +70,7 @@ const backTo = () => {
   position: absolute;
   left: 360px;
   top: 100px;
-  height: 800px;
+  height: 600px;
 }
 .contain {
   display: flex;
