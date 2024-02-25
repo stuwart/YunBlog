@@ -2,7 +2,10 @@
   <div class="head">
     <span class="word"> 一路向前 </span>
     <span class="right">
-      <img src="/search.png" alt="搜索" />
+      <div class="m-4 search">
+        <el-cascader class="searchbox" placeholder="请搜索关键词" :options="options" filterable />
+      </div>
+
       <RouterLink to="/" class="no-underline">首页</RouterLink>
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
       <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
@@ -23,6 +26,15 @@ import "@/assets/base.css";
 </script>
   
 <style lang="scss" scoped>
+.search {
+  display: flex; /* 添加flexbox布局 */
+  align-items: center; /* 在交叉轴（此处为垂直轴）上居中对齐子项 */
+  justify-content: center; /* 可选：在主轴（此处为水平轴）上居中对齐子项，如果你也想水平居中的话 */
+  /* 你可能需要设置一个高度，除非它已经通过内容或其他方式隐式设置 */
+}
+.el-cascader{
+  border-radius: 12px;
+}
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
@@ -46,7 +58,6 @@ import "@/assets/base.css";
   justify-content: space-between;
   align-items: center;
   img {
-    
     width: 24px;
     height: 24px;
   }
@@ -55,7 +66,7 @@ import "@/assets/base.css";
   }
   .right {
     margin-right: 40px;
-    width: 200px;
+    width: 500px;
     display: flex;
     justify-content: space-around;
   }
