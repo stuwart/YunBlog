@@ -75,15 +75,15 @@ const backTo = () => {
 .contain {
   display: flex;
   position: relative;
-  top:30px;
+  top: 30px;
 }
 .toc {
   width: 20%;
   margin-left: 200px;
-  h3{
+  h3 {
     display: inline-block;
     position: relative;
-    right:80px;
+    right: 80px;
   }
   .back {
     display: inline-block;
@@ -92,8 +92,8 @@ const backTo = () => {
     padding: 10px;
     border-radius: 12px;
     position: relative;
-    top:14px;
-    right:120px;
+    top: 14px;
+    right: 120px;
     color: #590def;
   }
 }
@@ -130,16 +130,15 @@ const backTo = () => {
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
-}
-
-.no-underline:hover {
-  background-color: rgb(180, 180, 180);
-}
-.no-underline:visited {
-  color: #590def;
-}
-.no-underline:active {
-  filter: brightness(1.2);
+  &:hover {
+    background-color: rgb(180, 180, 180);
+  }
+  &:visited {
+    color: #590def;
+  }
+  &:active {
+    filter: brightness(1.2);
+  }
 }
 .head {
   position: relative;

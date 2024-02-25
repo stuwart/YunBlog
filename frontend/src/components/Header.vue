@@ -1,14 +1,10 @@
 <template>
   <div class="head">
-    <span class="word"> 一路向前 </span>
+    <RouterLink to="/login" class="word no-underline"> 一路向前 </RouterLink>
     <span class="right">
-      <div class="m-4 search">
-        <el-cascader
-          class="searchbox"
-          placeholder="请搜索关键词"
-          :options="options"
-          filterable
-        />
+      <div class="search">
+        <div class="sbox" v-if="showbox"></div>
+        <img src="/search.png" alt="搜索" class="sicon" @click="search" />
       </div>
       <RouterLink to="/" class="no-underline">首页</RouterLink>
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
@@ -27,6 +23,16 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import "@/assets/base.css";
+import { ref } from "vue";
+let showbox = ref(false);
+
+const searchfunc = () => {
+  if (showbox === true) {
+    //搜索
+  } else {
+    showbox = true;
+  }
+};
 </script>
   
 <style lang="scss" scoped>
@@ -34,23 +40,31 @@ import "@/assets/base.css";
   display: flex; /* 添加flexbox布局 */
   align-items: center; /* 在交叉轴（此处为垂直轴）上居中对齐子项 */
   justify-content: center; /* 可选：在主轴（此处为水平轴）上居中对齐子项，如果你也想水平居中的话 */
+  .sicon {
+    cursor: pointer;
+  }
+  .sbox {
+    background-color: yellow;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+  }
 }
-.el-cascader {
-  border-radius: 12px;
-}
+
 .no-underline {
   text-decoration: none;
   border-radius: 4px;
+  &:hover {
+    background-color: rgb(180, 180, 180);
+  }
+  &:visited {
+    color: #590def;
+  }
+  &:active {
+    filter: brightness(1.2);
+  }
 }
-.no-underline:hover {
-  background-color: rgb(180, 180, 180);
-}
-.no-underline:visited {
-  color: #590def;
-}
-.no-underline:active {
-  filter: brightness(1.2);
-}
+
 .head {
   position: relative;
   top: 12px;
@@ -66,6 +80,9 @@ import "@/assets/base.css";
   }
   .word {
     margin-left: 40px;
+    &:visited {
+      color: #590def;
+    }
   }
   .right {
     margin-right: 40px;

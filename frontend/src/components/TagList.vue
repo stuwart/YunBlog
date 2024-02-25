@@ -100,15 +100,17 @@ const showarticles = async (id) => {
   border-radius: 12px;
   display: flex;
   justify-content: center;
-}
 
-.tagname:hover {
+  &:hover {
   // 变大
   font-size: 18px;
 
   background-color: rgb(220, 192, 220);
   padding: 5px; /* 添加一些内边距以便观察到阴影效果 */
 }
+}
+
+
 
 .divider {
   position: absolute;

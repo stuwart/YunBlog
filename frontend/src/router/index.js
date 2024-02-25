@@ -4,6 +4,9 @@ import Tag from "@/views/Tag.vue"
 import Project from '@/views/Project.vue'
 import Timeline from '@/views/Timeline.vue'
 import ArticleDetail from '@/components/ArticleDetail.vue'
+import Login from '@/views/Login.vue'
+import UserCenter from '@/views/UserCenter.vue'
+
 
 const routes = [
   {
@@ -26,6 +29,14 @@ const routes = [
     path:"/article/:id",
     component:ArticleDetail,
     props:true
+  },
+  {
+    path:"/login",
+    component:Login,
+  },
+  {
+    path:"/center",
+    component:UserCenter,
   }
 ]
 
