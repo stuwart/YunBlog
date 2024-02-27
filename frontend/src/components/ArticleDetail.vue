@@ -76,70 +76,57 @@ const backTo = () => {
   display: flex;
   position: relative;
   top: 30px;
-}
-.toc {
-  width: 20%;
-  margin-left: 200px;
-  h3 {
-    display: inline-block;
-    position: relative;
-    right: 80px;
-  }
-  .back {
-    display: inline-block;
-    cursor: pointer;
-    background-color: f4f4f4;
-    padding: 10px;
-    border-radius: 12px;
-    position: relative;
-    top: 14px;
-    right: 120px;
-    color: #590def;
-  }
-}
 
-.content {
-  width: 80%;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
+  .toc {
+    width: 20%;
+    margin-left: 200px;
+    h3 {
+      display: inline-block;
+      position: relative;
+      right: 80px;
+    }
+    .back {
+      display: inline-block;
+      cursor: pointer;
+      background-color: f4f4f4;
+      padding: 10px;
+      border-radius: 12px;
+      position: relative;
+      top: 14px;
+      right: 120px;
+      color: #590def;
+    }
+  }
+  .content {
+    width: 80%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
 
-  .title {
-    font-size: 24px;
-    margin: auto;
-    justify-content: center;
-  }
+    .title {
+      font-size: 24px;
+      margin: auto;
+      justify-content: center;
+    }
 
-  .tag {
-    margin-top: 20px;
-    font-size: 16px;
-    margin: auto;
-    justify-content: center;
-  }
-  .time {
-    font-size: 18px;
-    margin-left: auto;
-    margin-right: 100px;
-  }
+    .tag {
+      margin-top: 20px;
+      font-size: 16px;
+      margin: auto;
+      justify-content: center;
+    }
+    .time {
+      font-size: 18px;
+      margin-left: auto;
+      margin-right: 100px;
+    }
 
-  .zhengwen {
-    font-size: 16px;
-  }
-}
-
-.no-underline {
-  text-decoration: none;
-  border-radius: 4px;
-  &:hover {
-    background-color: rgb(180, 180, 180);
-  }
-  &:visited {
-    color: #590def;
-  }
-  &:active {
-    filter: brightness(1.2);
+    .zhengwen {
+      font-size: 16px;
+    }
   }
 }
+
 .head {
   position: relative;
   top: 12px;
@@ -158,6 +145,19 @@ const backTo = () => {
     width: 200px;
     display: flex;
     justify-content: space-around;
+    .no-underline {
+      text-decoration: none;
+      border-radius: 4px;
+      &:hover {
+        background-color: rgb(180, 180, 180);
+      }
+      &:visited {
+        color: #590def;
+      }
+      &:active {
+        filter: brightness(1.2);
+      }
+    }
   }
 }
 </style>

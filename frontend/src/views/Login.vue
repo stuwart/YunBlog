@@ -13,12 +13,17 @@
         <span>PassWord:</span>
         <input class="passwordbox" type="password" />
       </div>
-      <el-button type="primary" round>登录</el-button>
+      <el-button type="primary" round @click="login">登录</el-button>
     </div>
   </div>
 </template>
 
 <script setup>
+import router from "@/router"
+
+const login = () =>{
+  router.replace({path:'/usercenter'})
+}
 </script>
 
 <style lang="scss" scoped>

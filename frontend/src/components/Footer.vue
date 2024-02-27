@@ -1,9 +1,7 @@
 <template>
   <div class="icon">
     <img src="/bilibili.png" alt="bilibili" id="bilibili" />
-
     <img src="/social-weibo.png" alt="微博" id="weibo" />
-
     <img src="/xiaohongshu.png" alt="小红书" id="xiaohongshu" />
     <img src="/zhihu.png" alt="知乎" id="zhihu" />
   </div>
@@ -24,14 +22,11 @@ onMounted(() => {
   document.getElementById("bilibili").addEventListener("click", () => {
     window.open(
       "https://space.bilibili.com/50961403?spm_id_from=333.999.0.0",
-       "_blank"
+      "_blank"
     );
   });
   document.getElementById("weibo").addEventListener("click", () => {
-    window.open(
-      "https://weibo.com/u/5536620715",
-       "_blank"
-    );
+    window.open("https://weibo.com/u/5536620715", "_blank");
   });
   document.getElementById("xiaohongshu").addEventListener("click", () => {
     window.open(
@@ -40,10 +35,7 @@ onMounted(() => {
     );
   });
   document.getElementById("zhihu").addEventListener("click", () => {
-    window.open(
-      "https://www.zhihu.com/people/huang-yun-29-98",
-       "_blank"
-    );
+    window.open("https://www.zhihu.com/people/huang-yun-29-98", "_blank");
   });
 });
 </script>

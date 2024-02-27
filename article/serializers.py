@@ -40,6 +40,7 @@ class ArticleBaseSerializer(serializers.HyperlinkedModelSerializer):
                     Tag.objects.create(name=text)
 
         return super().to_internal_value(data)
+
     class Meta:
         model = Article
         fields = '__all__'
@@ -53,9 +54,6 @@ class ArticleListSerializer(ArticleBaseSerializer):
 
 
 class ArticleDetailSerializer(ArticleBaseSerializer):
-
-
-
     # 渲染后的正文
     body_html = serializers.SerializerMethodField()
     # 渲染后的目录
@@ -66,6 +64,7 @@ class ArticleDetailSerializer(ArticleBaseSerializer):
 
     def get_toc_html(self, obj):
         return obj.get_md()[1]
+
     class Meta:
         model = Article
         fields = '__all__'
@@ -78,6 +77,7 @@ class TagListSerializer(serializers.HyperlinkedModelSerializer):
     def get_cnt(self, obj):
         # 返回关联到这个Tag的文章数
         return obj.articles.count()
+
     class Meta:
         model = Tag
         fields = '__all__'

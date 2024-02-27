@@ -35,7 +35,7 @@ const routes = [
     component:Login,
   },
   {
-    path:"/center",
+    path:"/usercenter",
     component:UserCenter,
   }
 ]

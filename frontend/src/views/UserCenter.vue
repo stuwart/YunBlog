@@ -1,8 +1,50 @@
-<template></template>
+<template>
+  <div class="head">
+    <span class="word"> 一路向前 </span>
+    <span class="right">
+      <RouterLink to="/" class="no-underline">首页</RouterLink>
+      <RouterLink to="/tag" class="no-underline">标签</RouterLink>
+      <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
+      <RouterLink to="/project" class="no-underline">项目</RouterLink>
+    </span>
+  </div>
+</template>
 
 <script setup>
 </script>
 
-<style lang="less" scoped>
-
+<style lang="scss" scoped>
+.head {
+  position: relative;
+  top: 12px;
+  font-size: 18px;
+  color: #590def;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .word {
+    margin-left: 40px;
+  }
+  .right {
+    margin-right: 40px;
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    .no-underline {
+      text-decoration: none;
+      border-radius: 4px;
+      &:hover {
+        background-color: rgb(180, 180, 180);
+      }
+      &:visited {
+        color: #590def;
+      }
+      &:active {
+        filter: brightness(1.2);
+      }
+    }
+  }
+}
 </style>
