@@ -19,11 +19,11 @@
 </template>
 
 <script setup>
-import router from "@/router"
+import router from "@/router";
 
-const login = () =>{
-  router.replace({path:'/usercenter'})
-}
+const login = () => {
+  router.replace({ path: "/usercenter" });
+};
 </script>
 
 <style lang="scss" scoped>
