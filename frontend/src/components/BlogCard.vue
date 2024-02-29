@@ -1,11 +1,11 @@
 <template>
-  <el-space
-    wrap
-    direction="vertical"
-    style="width: 100%"
-    :fill-ratio="120"
-  >
-    <el-card class="box-card" style="border-radius: 40px" shadow="hover" @click="openArticle">
+  <el-space wrap direction="vertical" style="width: 100%" :fill-ratio="120">
+    <el-card
+      class="box-card"
+      style="border-radius: 40px"
+      shadow="hover"
+      @click="openArticle"
+    >
       <template #header>
         <div
           class="card-header"

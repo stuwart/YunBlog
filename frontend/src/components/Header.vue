@@ -4,7 +4,7 @@
     <span class="right">
       <div class="search">
         <Transition>
-          <div class="sbox" v-if="showbox">
+          <div class="sbox" v-if="isSearch">
             <input type="text" v-model="searchText" />
           </div>
         </Transition>
@@ -29,17 +29,17 @@ import { Transition } from "vue";
 import { RouterLink } from "vue-router";
 import "@/assets/base.css";
 import { ref } from "vue";
-let showbox = ref(false);
-
+var isSearch = ref(false);
 const searchText = ref("");
+
 const search = () => {
-  if (!showbox.value) {
-    showbox.value = true;
+  if (!isSearch.value) {
+    isSearch.value = true;
   } else {
     //搜索
     const text = searchText.value.trim();
     // console.log(text);
-    // if (text.charAt(0)!='')
+    
   }
 };
 </script>

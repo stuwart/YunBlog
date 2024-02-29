@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="title">
-      <p class="maintitle">秘密基地</p>
+      <p class="maintitle" @click="backToHome">秘密基地</p>
       <p class="subtitle">管理入口</p>
     </div>
     <div class="logbox">
@@ -24,6 +24,10 @@ import router from "@/router";
 const login = () => {
   router.replace({ path: "/usercenter" });
 };
+
+const backToHome = () => {
+  router.push({path:"/"});
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +43,7 @@ const login = () => {
     align-items: center;
     .maintitle {
       font-size: 48px;
+      cursor: pointer;
     }
     .subtitle {
       font-size: 24px;
