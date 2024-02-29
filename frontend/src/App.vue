@@ -23,7 +23,7 @@ import Header from "./components/Header.vue";
 #content {
   flex: 1;
 }
-#footer{
+#footer {
   margin-top: auto;
   padding-top: 20px;
 }
