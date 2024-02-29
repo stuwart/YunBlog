@@ -25,6 +25,7 @@ import Header from "./components/Header.vue";
 }
 #footer{
   margin-top: auto;
+  padding-top: 20px;
 }
 @font-face {
   font-family: alibaba;

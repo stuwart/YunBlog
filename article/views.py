@@ -24,6 +24,7 @@ class TagDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ArticleListView(generics.ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleListSerializer
+
     filter_backends = [filters.SearchFilter]
     search_fields = ['title']
 
