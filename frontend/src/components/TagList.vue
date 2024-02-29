@@ -34,13 +34,12 @@ import axios from "axios";
 import BlogCard from "./BlogCard.vue";
 // 定义一个响应式变量来存储标签列表
 const tags = ref([]);
-
+const url = "/api/tag/"
 // 定义获取标签列表的方法
 const fetchTags = async () => {
   try {
     const response = await axios.get("/api/tag/");
     tags.value = response.data;
-    console.log(tags);
   } catch (error) {
     console.error("There was an error fetching the tags:", error);
   }
@@ -49,17 +48,12 @@ const fetchTags = async () => {
 // 在组件挂载后调用fetchTags方法
 onMounted(fetchTags);
 
-//点击tag后，获取对应url
-// function showarticles(event) {
-//   const url = event.target.href;
-//   console.log("url:", url);
-// }
 const articles = ref([]);
 const showarticles = async (id) => {
   try {
     const response = await axios.get(`/api/tag/${id}/`);
     articles.value = response.data;
-    console.log('url:',id);
+    
   } catch {
     console.error("存在错误：", error);
   }
