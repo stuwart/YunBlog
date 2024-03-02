@@ -44,7 +44,9 @@ const search = () => {
   } else {
     //搜索
     const text = searchText.value.trim();
-    
+    function search(text) {
+      
+    }
   }
 };
 </script>

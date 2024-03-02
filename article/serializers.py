@@ -101,6 +101,8 @@ class TagForArticleSerializer(serializers.ModelSerializer):
 class ArticleTagSerializer(serializers.ModelSerializer):
     articles = ArticleListSerializer(many=True, read_only=True)
     tags = serializers.SerializerMethodField()
+    created = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
+    updated = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
 
     def get_tags(self, obj):
         """
