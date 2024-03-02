@@ -3,27 +3,14 @@
     <div class="left">
       <div class="title">标签</div>
       <div v-for="tag in tags.results" :key="tag.id">
-        <a
-          href="#"
-          class="tagname"
-          @click.prevent="showarticles(tag.id)"
+        <a href="#" class="tagname" @click.prevent="showarticles(tag.id)"
           >{{ tag.name }}({{ tag.cnt }})
         </a>
       </div>
       <el-divider direction="vertical" class="divider" />
     </div>
     <div class="detail">
-      <BlogCard
-        v-for="item in articles.articles"
-        :key="item.id"
-        :name="item.title"
-        :date="item.created"
-        :body="item.body"
-        :tags="item.tags"
-        :url="item.url"
-        :id = "item.id"
-        class="card"
-      ></BlogCard>
+      <ArticleList :url="url"></ArticleList>
     </div>
   </div>
 </template>
@@ -31,11 +18,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import BlogCard from "./BlogCard.vue";
-// 定义一个响应式变量来存储标签列表
+import ArticleList from "./ArticleList.vue";
+import getData from "@/utils/getData";
+
+const url = ref("/api/article/");
 const tags = ref([]);
-const url = "/api/tag/"
-// 定义获取标签列表的方法
+
 const fetchTags = async () => {
   try {
     const response = await axios.get("/api/tag/");
@@ -48,22 +36,14 @@ const fetchTags = async () => {
 // 在组件挂载后调用fetchTags方法
 onMounted(fetchTags);
 
-const articles = ref([]);
-const showarticles = async (id) => {
-  try {
-    const response = await axios.get(`/api/tag/${id}/`);
-    articles.value = response.data;
-    
-  } catch {
-    console.error("存在错误：", error);
-  }
-};
+const showarticles = (id) => {
+  url.value = `/api/tag-article/${id}/`;
+  // console.log("URLVALUE:",url.value);
+}
+
 </script>
 
 <style lang="scss" scoped>
-.card{
-  margin-top: 20px;
-}
 .detail {
   position: relative;
   left: 500px;
@@ -96,15 +76,13 @@ const showarticles = async (id) => {
   justify-content: center;
 
   &:hover {
-  // 变大
-  font-size: 18px;
+    // 变大
+    font-size: 18px;
 
-  background-color: rgb(220, 192, 220);
-  padding: 5px; /* 添加一些内边距以便观察到阴影效果 */
+    background-color: rgb(220, 192, 220);
+    padding: 5px; /* 添加一些内边距以便观察到阴影效果 */
+  }
 }
-}
-
-
 
 .divider {
   position: absolute;

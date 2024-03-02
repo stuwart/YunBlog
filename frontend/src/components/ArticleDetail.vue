@@ -45,13 +45,11 @@ const articleId = ref(route.params.id);
 
 const url = "/api/article/" + articleId.value + "/";
 
-console.log(url);
 
 const fetchArticleDetail = async () => {
   try {
     const response = await axios.get(url);
     article.value = response.data;
-    console.log(article);
   } catch (error) {
     console.error("存在错误：", error);
   }

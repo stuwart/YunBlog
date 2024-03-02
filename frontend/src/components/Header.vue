@@ -8,7 +8,12 @@
             <input type="text" v-model="searchText" />
           </div>
         </Transition>
-        <img src="/search.png" alt="搜索" class="searchicon" @click="search" />
+        <img
+          src="/search.png"
+          alt="搜索"
+          class="searchicon"
+          @click.prevent="search"
+        />
       </div>
       <RouterLink to="/" class="no-underline">首页</RouterLink>
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
@@ -29,7 +34,8 @@ import { Transition } from "vue";
 import { RouterLink } from "vue-router";
 import "@/assets/base.css";
 import { ref } from "vue";
-var isSearch = ref(false);
+import router from "@/router";
+const isSearch = ref(false);
 const searchText = ref("");
 
 const search = () => {
@@ -38,7 +44,6 @@ const search = () => {
   } else {
     //搜索
     const text = searchText.value.trim();
-    // console.log(text);
     
   }
 };
@@ -62,7 +67,7 @@ const search = () => {
     cursor: pointer;
     z-index: 2;
     position: relative;
-    left: 40px;
+    left: 45px;
   }
   .sbox {
     width: 120px;

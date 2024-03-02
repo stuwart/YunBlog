@@ -12,8 +12,10 @@
           style="display: flex; justify-content: space-between"
         >
           <span>
-            <span>{{ name }}</span>
-            <span style="margin-left: 20px">{{ tags }}</span>
+            <span class="titleName">{{ name }}</span>
+            <span v-for="tag in tags" :key="tag" class="tagName"
+              >#{{ tag }}</span
+            >
           </span>
           <span style="margin-right: 20px">{{ date }}</span>
         </div>
@@ -35,6 +37,12 @@ const openArticle = () => {
 </script>
 
 <style lang="scss" scoped>
+.titleName {
+  margin-right: 20px;
+}
+.tagName {
+  margin: 10px;
+}
 .box-card {
   width: 800px;
   height: 300px;

@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/article/<int:pk>/', ArticleDetailView.as_view(), name='article-detail'),
     path('api/tag/', TagListView.as_view(), name='tag-list'),
     path('api/tag/<int:pk>/', TagDetailView.as_view(), name='tag-detail'),
+    path('api/tag-article/<int:pk>/', ArticleByTagView.as_view(), name='tag-article-detail')
 ]

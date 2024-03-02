@@ -86,9 +86,28 @@ class TagListSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class TagDetailSerializer(serializers.ModelSerializer):
-    articles = ArticleListSerializer(many=True, read_only=True)
-
     class Meta:
         model = Tag
         fields = '__all__'
         # fields = ['id', 'name', 'articles']
+
+
+class TagForArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['name']
+
+
+class ArticleTagSerializer(serializers.ModelSerializer):
+    articles = ArticleListSerializer(many=True, read_only=True)
+    tags = serializers.SerializerMethodField()
+
+    def get_tags(self, obj):
+        """
+        返回与此文章关联的所有标签的名称列表。
+        """
+        return [tag.name for tag in obj.tags.all()]
+
+    class Meta:
+        model = Article
+        fields = '__all__'

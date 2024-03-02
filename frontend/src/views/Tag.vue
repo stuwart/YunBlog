@@ -1,7 +1,7 @@
 <template>
-  <Header></Header>
+  <Header />
   <div class="main">
-    <TagList></TagList>
+    <TagList />
   </div>
 </template>
   

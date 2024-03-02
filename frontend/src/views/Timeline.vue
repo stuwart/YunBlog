@@ -1,5 +1,5 @@
 <template>
- <Header></Header>
+  <Header></Header>
   <div class="main">
     <el-timeline>
       <el-timeline-item
@@ -15,7 +15,6 @@
       </el-timeline-item>
     </el-timeline>
   </div>
- 
 </template>
     
 <script setup>
@@ -49,11 +48,11 @@ const fetchAllArticles = async (url) => {
   }
 };
 
-onMounted(() => fetchAllArticles('/api/article/'));
+onMounted(() => fetchAllArticles("/api/article/"));
 </script>
     
 <style lang ="scss" scoped>
-h3{
+h3 {
   display: inline-block;
 }
 .main {
