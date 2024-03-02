@@ -39,6 +39,7 @@ const openArticle = () => {
 <style lang="scss" scoped>
 .titleName {
   margin-right: 20px;
+  font-weight: bold;
 }
 .tagName {
   margin: 10px;
