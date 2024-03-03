@@ -5,14 +5,14 @@
       <div class="search">
         <Transition>
           <div class="sbox" v-if="isSearch">
-            <input type="text" v-model="searchText" />
+            <input type="text" v-model="searchText" @keyup.enter="clicksearch" />
           </div>
         </Transition>
         <img
           src="/search.png"
           alt="搜索"
           class="searchicon"
-          @click.prevent="search"
+          @click.prevent="clicksearch"
         />
       </div>
       <RouterLink to="/" class="no-underline">首页</RouterLink>
@@ -35,18 +35,19 @@ import { RouterLink } from "vue-router";
 import "@/assets/base.css";
 import { ref } from "vue";
 import router from "@/router";
+const emits = defineEmits(["search"]);
+
 const isSearch = ref(false);
 const searchText = ref("");
 
-const search = () => {
+const clicksearch = () => {
   if (!isSearch.value) {
     isSearch.value = true;
   } else {
     //搜索
     const text = searchText.value.trim();
-    function search(text) {
-      
-    }
+    console.log(text);
+    emits("search", text);
   }
 };
 </script>
