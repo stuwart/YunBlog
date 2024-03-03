@@ -5,7 +5,11 @@
       <div class="search">
         <Transition>
           <div class="sbox" v-if="isSearch">
-            <input type="text" v-model="searchText" @keyup.enter="clicksearch" />
+            <input
+              type="text"
+              v-model="searchText"
+              @keyup.enter="clicksearch"
+            />
           </div>
         </Transition>
         <img
@@ -15,7 +19,9 @@
           @click.prevent="clicksearch"
         />
       </div>
-      <RouterLink to="/" class="no-underline">首页</RouterLink>
+      <RouterLink to="/" class="no-underline" @click="backToHome"
+        >首页</RouterLink
+      >
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
       <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
       <RouterLink to="/project" class="no-underline">关于</RouterLink>
@@ -34,7 +40,7 @@ import { Transition } from "vue";
 import { RouterLink } from "vue-router";
 import "@/assets/base.css";
 import { ref } from "vue";
-import router from "@/router";
+
 const emits = defineEmits(["search"]);
 
 const isSearch = ref(false);
@@ -46,9 +52,13 @@ const clicksearch = () => {
   } else {
     //搜索
     const text = searchText.value.trim();
-    console.log(text);
+    // console.log(text);
     emits("search", text);
   }
+};
+
+const backToHome = () => {
+  emits("search", "");
 };
 </script>
   
