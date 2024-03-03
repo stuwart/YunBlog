@@ -10,7 +10,9 @@
       >
         <div v-for="article in articles" :key="article.id">
           <h3>{{ article.title }}</h3>
-          <span>{{ article.tags }}</span>
+          <span v-for="tag in article.tags" :key="tag" class="tag"
+            >#{{ tag }}</span
+          >
         </div>
       </el-timeline-item>
     </el-timeline>
@@ -59,5 +61,8 @@ h3 {
   position: relative;
   top: 60px;
   left: 25%;
+}
+.tag {
+  margin: 10px;
 }
 </style>

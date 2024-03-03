@@ -20,6 +20,7 @@
       :background="background"
       layout="prev, pager, next, jumper"
       :total="totalPage"
+      :default-page-size:10
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
