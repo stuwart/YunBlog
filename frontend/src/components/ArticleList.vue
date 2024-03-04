@@ -30,7 +30,7 @@
 <script setup>
 import BlogCard from "@/components/BlogCard.vue";
 import getData from "@/utils/getData";
-import { ref, watch, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
 const background = "#f4f4f4";
