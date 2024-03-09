@@ -23,7 +23,7 @@
         >首页</RouterLink
       >
       <RouterLink to="/tag" class="no-underline">标签</RouterLink>
-      <RouterLink to="/timeline" class="no-underline">归档</RouterLink>
+      <RouterLink to="/timeline" class="no-underline">时间线</RouterLink>
       <RouterLink to="/project" class="no-underline">关于</RouterLink>
     </span>
   </div>
