@@ -8,7 +8,13 @@
       <RouterLink to="/project" class="no-underline">项目</RouterLink>
     </span>
   </div>
+  <div class="main">
+    <div class="hello">Hello, 赟！</div>
+    
+
+  </div>
 </template>
+
 
 <script setup>
 </script>
