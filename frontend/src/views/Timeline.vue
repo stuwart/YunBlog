@@ -1,5 +1,6 @@
 <template>
   <Header></Header>
+  <BigTitle></BigTitle>
   <div class="main">
     <el-timeline>
       <el-timeline-item
@@ -21,7 +22,7 @@
     
 <script setup>
 import Header from "@/components/Header.vue";
-
+import BigTitle from "@/components/BigTitle.vue";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 

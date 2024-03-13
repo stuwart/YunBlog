@@ -20,6 +20,7 @@
 
 <script setup>
 import router from "@/router";
+import BigTitle from "@/components/BigTitle.vue";
 
 const login = () => {
   router.replace({ path: "/usercenter" });
