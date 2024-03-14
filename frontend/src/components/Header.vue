@@ -45,9 +45,8 @@ const clicksearch = () => {
   if (!isSearch.value) {
     isSearch.value = true;
   } else {
-    //搜索
+   
     const text = searchText.value.trim();
-    // console.log(text);
     emits("search", text);
   }
 };

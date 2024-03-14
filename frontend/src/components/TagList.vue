@@ -21,7 +21,7 @@ import axios from "axios";
 import ArticleList from "./ArticleList.vue";
 import getData from "@/utils/getData";
 
-const url = ref("/api/article/");
+const url = ref("");
 const tags = ref([]);
 
 const fetchTags = async () => {
@@ -38,7 +38,6 @@ onMounted(fetchTags);
 
 const showarticles = (id) => {
   url.value = `/api/tag-article/${id}/`;
-  // console.log("URLVALUE:",url.value);
 }
 
 </script>

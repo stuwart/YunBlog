@@ -44,7 +44,6 @@ const currentPage = ref(1);
 const pageSize = ref(5);
 
 watchEffect(() => {
-  console.log("ArticleList:", props.url);
   getData(articles, props.url, kwargs, totalPage);
 });
 </script>

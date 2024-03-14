@@ -8,8 +8,7 @@
       <span>标签</span>
       <span>项目</span>
     </div>
-    
-
+    <router-view></router-view>
 
   </div>
 </template>
@@ -17,6 +16,8 @@
 
 <script setup>
 import Header from '@/components/Header.vue';
+
+
 </script>
 
 <style lang="scss" scoped>
