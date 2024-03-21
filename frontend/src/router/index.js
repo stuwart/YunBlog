@@ -6,9 +6,10 @@ import Timeline from '@/views/Timeline.vue'
 import ArticleDetail from '@/components/ArticleDetail.vue'
 import Login from '@/views/Login.vue'
 import UserCenter from '@/views/UserCenter.vue'
+import Overview from '@/views/Overview.vue'
+import Admin from '@/views/Admin.vue'
 
-
-const routes = [
+const coreroutes = [
   {
     path: '/',
     component: Home,
@@ -35,9 +36,22 @@ const routes = [
     component:Login,
   },
   {
-    path:"/usercenter",
-    component:UserCenter,
-  }
+    path: "/usercenter",
+    component: UserCenter,
+    children: [
+      {
+        path: 'overview',
+        component: Overview,
+      },
+      {
+        path: 'admin',
+        component:Admin,
+      }
+    ]
+},
+]
+const routes = [
+  ...coreroutes
 ]
 
 const router = createRouter({

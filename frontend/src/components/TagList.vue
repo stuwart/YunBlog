@@ -19,7 +19,6 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import ArticleList from "./ArticleList.vue";
-import getData from "@/utils/getData";
 
 const url = ref("");
 const tags = ref([]);

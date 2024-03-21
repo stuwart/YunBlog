@@ -1,5 +1,4 @@
 import axios from "axios";
-import { watch, watchEffect, ref } from "vue";
 
 export default async function getData(info, route, kwargs, totalPage) {
     try {
