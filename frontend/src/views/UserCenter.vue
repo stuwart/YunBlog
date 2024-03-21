@@ -1,10 +1,10 @@
 <template>
   <Header></Header>
   <div class="main">
-    <div class="hello">Hello,赟！</div>
+    <div class="hello">Hello , 赟！</div>
     <div class="tab">
-      <span>总览</span>
-      <span>文章</span> 
+      <router-link to="/usercenter/dashbord">总览</router-link>
+      <router-link to="/usercenter/dashbord">文章</router-link> 
       <span>标签</span>
       <span>项目</span>
     </div>
