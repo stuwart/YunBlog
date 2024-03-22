@@ -6,8 +6,10 @@ import Timeline from '@/views/Timeline.vue'
 import ArticleDetail from '@/components/ArticleDetail.vue'
 import Login from '@/views/Login.vue'
 import UserCenter from '@/views/UserCenter.vue'
-import Dashbord from '@/views/Dashbord.vue'
-import Admin from '@/views/Admin.vue'
+import AdminArticle from '@/views/AdminArticle.vue'
+import AdminProject from '@/views/AdminProject.vue'
+import AdminTag from '@/views/AdminTag.vue'
+
 
 const coreroutes = [
   {
@@ -40,12 +42,16 @@ const coreroutes = [
     component: UserCenter,
     children: [
       {
-        path: 'dashbord',
-        component: Dashbord,
+        path: 'admin-article',
+        component:AdminArticle,
       },
       {
-        path: 'admin',
-        component:Admin,
+        path: 'admin-tag',
+        component:AdminTag,
+      },
+      {
+        path:'admin-project',
+        component:AdminProject,
       }
     ]
 },
