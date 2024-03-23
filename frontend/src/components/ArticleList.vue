@@ -31,9 +31,6 @@
 import BlogCard from "@/components/BlogCard.vue";
 import getData from "@/utils/getData";
 import { ref, watchEffect } from "vue";
-import { useRoute } from "vue-router";
-
-const background = "#f4f4f4";
 
 const isSearch = ref(true);
 const totalPage = ref();

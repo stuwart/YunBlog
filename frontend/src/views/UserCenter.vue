@@ -6,22 +6,26 @@
       :collapse="isCollapse"
       style="background-color: #f4f4f4; margin-top: 40px"
     >
-      <el-menu-item index="1">
-        <el-icon><img src="/icon-article.png" /></el-icon>
-        <span><router-link to="admin-article">文章管理</router-link></span>
+  
+        <el-menu-item index="1" @click="showArea('/usercenter/admin-article/')">
+          <el-icon><img src="/icon-article.png" /></el-icon>
+          <span class="menu-text">文章管理</span>
+        </el-menu-item>
+      
+      <el-menu-item index="2" @click="showArea('/usercenter/admin-tag/')">
+        <router-link to="/usercenter/admin-tag/">
+          <el-icon><img src="/icon-tag.png" /></el-icon>
+        </router-link>
+        <span class="menu-text">标签管理</span>
       </el-menu-item>
-      <el-menu-item index="2">
-        <el-icon><img src="/icon-tag.png" /></el-icon>
-        <span>标签管理</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <el-icon><img src="/icon-project.png" /></el-icon>
-
-        <span><router-link to="admin-project">项目管理</router-link></span>
+      <el-menu-item index="3" @click="showArea('/usercenter/admin-project/')">
+        <router-link to="/usercenter/admin-project/">
+          <el-icon><img src="/icon-project.png" /></el-icon>
+        </router-link>
+        <span class="menu-text">项目管理</span>
       </el-menu-item>
       <el-menu-item index="4" @click="openOrClose">
         <el-icon><img src="/open.png" /></el-icon>
-
         <span>展开/缩小</span>
       </el-menu-item>
     </el-menu>
@@ -36,16 +40,22 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import Header from "@/components/Header.vue";
+import router from "@/router";
 
 const isCollapse = ref(true);
 const openOrClose = () => {
   isCollapse.value = !isCollapse.value;
+};
+
+const showArea = (url) => {
+    router.replace({path:url})
 };
 </script>
 
 <style lang="scss" scoped>
 .sidebar {
   display: inline-block;
+ 
   img {
     width: 20px;
     height: auto;
@@ -62,8 +72,8 @@ const openOrClose = () => {
     position: relative;
     font-size: 24px;
     color: #3f3f3f;
-    bottom:180px;
-    left:40px;
+    bottom: 180px;
+    left: 40px;
   }
 }
 </style>
