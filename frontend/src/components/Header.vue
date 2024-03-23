@@ -1,6 +1,7 @@
 <template>
   <div class="head">
     <RouterLink to="/login" class="word no-underline"> 一路向前 </RouterLink>
+    <!-- <span class="word no-underline">一路向前</span> -->
     <span class="right">
       <div class="search">
         <Transition>
@@ -27,7 +28,6 @@
       <RouterLink to="/project" class="no-underline">关于</RouterLink>
     </span>
   </div>
-  
 </template>
   
 <script setup>
@@ -45,7 +45,6 @@ const clicksearch = () => {
   if (!isSearch.value) {
     isSearch.value = true;
   } else {
-   
     const text = searchText.value.trim();
     emits("search", text);
   }
@@ -57,10 +56,9 @@ const backToHome = () => {
 </script>
   
 <style lang="scss" scoped>
-RouterLink{
+RouterLink {
   cursor: pointer;
 }
-
 
 .v-enter-active,
 .v-leave-active {
@@ -142,6 +140,4 @@ RouterLink{
     justify-content: space-around;
   }
 }
-
-
 </style>

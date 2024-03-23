@@ -1,10 +1,10 @@
 <template>
-  <el-space wrap direction="vertical" style="width: 100%" :fill-ratio="120">
+  <el-space wrap direction="vertical"  :fill-ratio="120">
     <el-card
       class="box-card"
-      style="border-radius: 40px"
       shadow="hover"
       @click="handle"
+      :style="styleObject"
     >
       <template #header>
         <div
@@ -29,15 +29,20 @@
 
 <script setup>
 import router from "@/router";
-const props = defineProps(["name", "tags", "date", "body", "url", "id","opt"]);
-
+const props = defineProps(["name", "tags", "date", "body", "url", "id","opt","con"]);
+const styleObject={
+  width:props.con.width,
+  height:props.con.height,
+  borderRadius:props.con.borderRadius
+}
 const openArticle = () => {
   const toUrl = "/article/" + props.id + "/";
   router.push(toUrl);
 };
 
 const openEdit = () => {
-  console.log(111);
+  const toUrl = "/article/" + props.id + "/";
+  router.push(toUrl);
 };
 const handle = () => {
   if(props.opt === "openEdit"){
@@ -47,8 +52,6 @@ const handle = () => {
     openArticle();
   }
 }
-
-
 
 </script>
 
@@ -61,8 +64,6 @@ const handle = () => {
   margin: 10px;
 }
 .box-card {
-  width: 800px;
-  height: 300px;
   cursor: pointer;
 }
 .text-item {
