@@ -26,8 +26,9 @@
       <div class="content">
         <div class="title">{{ article.title }}</div>
         <div class="tag">{{ article.tags }}</div>
-        <div class="time">{{ article.created }}</div>
+        <div class="time">更新于：{{ article.updated }}</div>
         <div v-html="article.body_html" class="zhengwen"></div>
+        <div class="date">创建于：{{ article.created }}</div>
       </div>
     </div>
   </div>
@@ -44,7 +45,6 @@ const route = useRoute();
 const articleId = ref(route.params.id);
 
 const url = "/api/article/" + articleId.value + "/";
-
 
 const fetchArticleDetail = async () => {
   try {
@@ -69,6 +69,11 @@ const backTo = () => {
   left: 360px;
   top: 100px;
   height: 600px;
+}
+.date {
+  position: relative;
+  color: grey;
+  margin-top:100px;
 }
 .contain {
   display: flex;

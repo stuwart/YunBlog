@@ -10,11 +10,12 @@
       <el-form-item label="文章内容">
         <el-input v-model="form.body" type="textarea" />
       </el-form-item>
+      <div class="markdownText" v-html="markdownText"></div>
       <el-form-item>
         <div class="button">
           <el-button round>取消</el-button>
+          <el-button type="danger" round v-if="id != 0">删除</el-button>
           <el-button type="primary" round @click="onSubmit">保存</el-button>
-          <el-button type="danger" round>删除</el-button>
         </div>
       </el-form-item>
     </el-form>
@@ -23,12 +24,14 @@
 
 <script setup>
 import axios from "axios";
-import { onMounted, ref, reactive } from "vue";
+import {marked} from "marked";
+import { onMounted, ref, reactive, watchEffect } from "vue";
 import { useRoute } from "vue-router";
+
+
 
 const route = useRoute();
 const id = route.params.id;
-const url = "/api/article/" + id + "/";
 
 const form = reactive({
   title: "",
@@ -37,26 +40,52 @@ const form = reactive({
 });
 
 const data = ref({});
+const url = "/api/article/" + id + "/";
+const markdownText = ref("");
+watchEffect(()=>{
+    markdownText.value = marked(form.body);
+})
 
 const fetData = async () => {
   try {
-    const response = await axios.get(url);
-    data.value = response.data;
-    // console.log(data.value);
-    form.title = data.value.title;
-    form.tags = data.value.tags;
-    form.body = data.value.body;
+    
+    if (id != 0) {
+      const response = await axios.get(url);
+      data.value = response.data;
+      form.title = data.value.title;
+      form.tags = data.value.tags;
+      form.body = data.value.body;
+    }
   } catch (error) {
     console.log("存在错误：", error);
   }
 };
 
-const onSubmit = () => {
-  console.log("success");
+const onSubmit = async() => {
+  try{
+    const response = await axios.patch(url,form);
+    console.log("成功");
+  }catch(error){
+    console.log("存在错误：",error);
+  }
+
+
+
 };
 
 onMounted(fetData);
 </script>
 
 <style lang="scss" scoped>
+.edit {
+  position: absolute;
+  left: 80px;
+  top: 60px;
+  width: 100%;
+  height: 100%;
+
+  .button {
+    margin-top: 100px;
+  }
+}
 </style>
