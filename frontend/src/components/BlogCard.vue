@@ -4,7 +4,7 @@
       class="box-card"
       style="border-radius: 40px"
       shadow="hover"
-      @click="openArticle"
+      @click="handle"
     >
       <template #header>
         <div
@@ -29,11 +29,27 @@
 
 <script setup>
 import router from "@/router";
-const props = defineProps(["name", "tags", "date", "body", "url", "id"]);
+const props = defineProps(["name", "tags", "date", "body", "url", "id","opt"]);
+
 const openArticle = () => {
   const toUrl = "/article/" + props.id + "/";
   router.push(toUrl);
 };
+
+const openEdit = () => {
+  console.log(111);
+};
+const handle = () => {
+  if(props.opt === "openEdit"){
+    openEdit();
+  }
+  else{
+    openArticle();
+  }
+}
+
+
+
 </script>
 
 <style lang="scss" scoped>
