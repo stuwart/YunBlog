@@ -28,9 +28,9 @@ import axios from "axios";
 import router from "@/router";
 
 const con = ref({
-  width: "380px",
-  height: "200px",
-  borderRadius: "30px",
+  width: "600px",
+  height: "300px",
+  borderRadius: "40px",
 });
 
 const articles = ref([]);
@@ -52,10 +52,7 @@ const fetchArticles = async () => {
   console.log(articles.value);
 };
 
-const addArticle=()=>{
-    
-}
-
+const addArticle = () => {};
 
 onMounted(fetchArticles);
 </script>

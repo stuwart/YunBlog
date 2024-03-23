@@ -50,7 +50,7 @@ const openArticle = () => {
 };
 
 const openEdit = () => {
-  const toUrl = "/article/" + props.id + "/";
+  const toUrl = "/article/edit/" + props.id + "/";
   router.push(toUrl);
 };
 const handle = () => {

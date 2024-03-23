@@ -57,6 +57,12 @@ const coreroutes = [
     ]
   },
   {
+    path: "/article/edit/:id",
+    name: "ArticleEdit",
+    component: ArticleEdit,
+    props:true
+  },
+  {
     path: "/article/create",
     name: "ArticleCreate",
     component: ArticleEdit,
