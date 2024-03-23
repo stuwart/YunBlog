@@ -1,5 +1,9 @@
 <template>
   <div class="empty"></div>
+  <div class="add">
+    <el-button type="primary" round @click="addArticle">新增</el-button>
+  </div>
+
   <div class="content">
     <BlogCard
       v-for="item in articles"
@@ -21,8 +25,10 @@
 import BlogCard from "@/components/BlogCard.vue";
 import { onMounted, ref } from "vue";
 import axios from "axios";
+import router from "@/router";
+
 const con = ref({
-  width: "360px",
+  width: "380px",
   height: "200px",
   borderRadius: "30px",
 });
@@ -46,6 +52,11 @@ const fetchArticles = async () => {
   console.log(articles.value);
 };
 
+const addArticle=()=>{
+    
+}
+
+
 onMounted(fetchArticles);
 </script>
 
@@ -56,7 +67,7 @@ onMounted(fetchArticles);
 .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 
   .smallCard {
     margin: 20px;

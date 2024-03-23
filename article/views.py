@@ -33,12 +33,13 @@ class ArticleByTagView(generics.ListAPIView):
 
 
 class ArticleListView(generics.ListCreateAPIView):
-    queryset = Article.objects.all()
+
     serializer_class = ArticleListSerializer
 
     filter_backends = [filters.SearchFilter]
     search_fields = ['title']
-
+    def get_queryset(self):
+        return Article.objects.order_by('-updated')
 
 class ArticleDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()

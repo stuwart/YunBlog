@@ -1,7 +1,6 @@
 <template>
-  <!-- <BlogCard v-for="item in art"> </BlogCard> -->
   <Header @search="handleSearch"></Header>
-   <BigTitle></BigTitle>
+  <BigTitle></BigTitle>
   <ArticleList :url="url"></ArticleList>
 </template>
 
@@ -17,7 +16,6 @@ const searchQuery = ref("");
 const handleSearch = (query) => {
   searchQuery.value = query;
   url.value = `/api/article/?search=${searchQuery.value}`;
-  console.log(url.value);
 };
 </script>
 

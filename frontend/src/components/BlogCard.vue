@@ -1,5 +1,5 @@
 <template>
-  <el-space wrap direction="vertical"  :fill-ratio="120">
+  <el-space wrap direction="vertical" :fill-ratio="120">
     <el-card
       class="box-card"
       shadow="hover"
@@ -12,12 +12,12 @@
           style="display: flex; justify-content: space-between"
         >
           <span>
-            <span class="titleName">{{ name }}</span>
+            <span class="titleName" style="font-size: 18px">{{ name }}</span>
             <span v-for="tag in tags" :key="tag" class="tagName"
               >#{{ tag }}</span
             >
           </span>
-          <span style="margin-right: 20px">{{ date }}</span>
+          <span style="margin-right: 20px">upd: {{ date }}</span>
         </div>
       </template>
       <div class="text-item">
@@ -29,12 +29,21 @@
 
 <script setup>
 import router from "@/router";
-const props = defineProps(["name", "tags", "date", "body", "url", "id","opt","con"]);
-const styleObject={
-  width:props.con.width,
-  height:props.con.height,
-  borderRadius:props.con.borderRadius
-}
+const props = defineProps([
+  "name",
+  "tags",
+  "date",
+  "body",
+  "url",
+  "id",
+  "opt",
+  "con",
+]);
+const styleObject = {
+  width: props.con.width,
+  height: props.con.height,
+  borderRadius: props.con.borderRadius,
+};
 const openArticle = () => {
   const toUrl = "/article/" + props.id + "/";
   router.push(toUrl);
@@ -45,14 +54,12 @@ const openEdit = () => {
   router.push(toUrl);
 };
 const handle = () => {
-  if(props.opt === "openEdit"){
+  if (props.opt === "openEdit") {
     openEdit();
-  }
-  else{
+  } else {
     openArticle();
   }
-}
-
+};
 </script>
 
 <style lang="scss" scoped>

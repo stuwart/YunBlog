@@ -9,6 +9,7 @@ import UserCenter from '@/views/UserCenter.vue'
 import AdminArticle from '@/views/AdminArticle.vue'
 import AdminProject from '@/views/AdminProject.vue'
 import AdminTag from '@/views/AdminTag.vue'
+import ArticleEdit from '@/components/ArticleEdit.vue'
 
 
 const coreroutes = [
@@ -29,13 +30,13 @@ const coreroutes = [
     component: Timeline,
   },
   {
-    path:"/article/:id",
-    component:ArticleDetail,
-    props:true
+    path: "/article/:id",
+    component: ArticleDetail,
+    props: true
   },
   {
-    path:"/login",
-    component:Login,
+    path: "/login",
+    component: Login,
   },
   {
     path: "/usercenter",
@@ -43,18 +44,23 @@ const coreroutes = [
     children: [
       {
         path: 'admin-article',
-        component:AdminArticle,
+        component: AdminArticle,
       },
       {
         path: 'admin-tag',
-        component:AdminTag,
+        component: AdminTag,
       },
       {
-        path:'admin-project',
-        component:AdminProject,
+        path: 'admin-project',
+        component: AdminProject,
       }
     ]
-},
+  },
+  {
+    path: "/article/create",
+    name: "ArticleCreate",
+    component: ArticleEdit,
+  }
 ]
 const routes = [
   ...coreroutes

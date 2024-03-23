@@ -4,7 +4,7 @@
       v-for="item in articles"
       :key="item.id"
       :name="item.title"
-      :date="item.created"
+      :date="item.updated"
       :body="item.body"
       :tags="item.tags"
       :url="item.url"
