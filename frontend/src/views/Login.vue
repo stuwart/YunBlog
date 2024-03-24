@@ -4,31 +4,41 @@
       <p class="maintitle" @click="backToHome">秘密基地</p>
       <p class="subtitle">管理入口</p>
     </div>
-    <div class="logbox">
+    <form class="logbox">
       <div class="username">
         <span>UserName:</span>
-        <input class="userbox" />
+        <input class="userbox" v-model="username" />
       </div>
       <div class="password">
         <span>PassWord:</span>
-        <input class="passwordbox" type="password" />
+        <input class="passwordbox" type="password" v-model="password" />
       </div>
-      <el-button type="primary" round @click="login">登录</el-button>
-    </div>
+      <el-button type="primary" round @click.prevent="login">登录</el-button>
+    </form>
+    <p class="tip" v-if="isWrong">用户名或密码错误！</p>
   </div>
 </template>
 
 <script setup>
 import router from "@/router";
+import { ref } from "vue";
 
+const username = ref("");
+const password = ref("");
+const isWrong = ref(false);
 
 const login = () => {
-  router.replace({ path: "/usercenter" });
+  if (username.value === "huangyun" && password.value === "Yg171159") {
+    isWrong.value = false;
+    router.replace({ path: "/usercenter" });
+  } else {
+    isWrong.value = true;
+  }
 };
 
 const backToHome = () => {
-  router.push({path:"/"});
-}
+  router.push({ path: "/" });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -37,6 +47,10 @@ const backToHome = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .tip {
+    color: red;
+  }
   .title {
     display: flex;
     flex-direction: column;

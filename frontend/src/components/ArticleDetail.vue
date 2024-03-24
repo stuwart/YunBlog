@@ -56,9 +56,6 @@ const fetchArticleDetail = async () => {
   try {
     const response = await axios.get(url);
     article.value = response.data;
-    // console.log(article.value.body);
-
-    console.log("111", mdBody);
   } catch (error) {
     console.error("存在错误：", error);
   }
@@ -108,9 +105,9 @@ onMounted(fetchArticleDetail);
       right: 120px;
       color: #590def;
     }
-    .tocItem{
+    .tocItem {
       position: relative;
-      right:100px;
+      right: 100px;
     }
   }
   .content {
