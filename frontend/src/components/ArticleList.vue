@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <BlogCard
-      v-for="item in articles"
+      v-for="item in articles.results"
       :key="item.id"
       :name="item.title"
       :date="item.updated"
@@ -14,34 +14,24 @@
     ></BlogCard>
   </div>
 
-  <!-- <div class="demo-pagination-block" v-if="isSearch">
+  <div class="demo-pagination-block pagination">
     <el-pagination
       v-model:current-page="currentPage"
       v-model:page-size="pageSize"
-      :small="small"
-      :disabled="disabled"
-      :background="background"
       layout="prev, pager, next, jumper"
-      :total="totalPage"
-      :default-page-size:10
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
+      :total="articles.count"
+      :hide-on-single-page="true"
     />
-  </div> -->
+  </div>
 </template>
 
 <script setup>
 import BlogCard from "@/components/BlogCard.vue";
 import getData from "@/utils/getData";
-import { onMounted, ref, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 
-const isSearch = ref(true);
-const totalPage = ref();
 const props = defineProps(["url"]);
-const articles = ref([]);
-const kwargs = ref({ page: 1, searchText: "" });
-const currentPage = ref(1);
-const pageSize = ref(10);
+const articles = ref({});
 
 const con = ref({
   width: "800px",
@@ -50,9 +40,14 @@ const con = ref({
 });
 
 watchEffect(() => {
-  getData(articles, props.url, kwargs, totalPage);
+  getData(articles, props.url);
 });
 
+const currentPage = ref(1);
+const pageSize = ref(10);
+watchEffect(() => {
+  getData(articles, `/api/article?page=${currentPage.value}`);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -60,8 +55,14 @@ watchEffect(() => {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   .card {
     margin: 20px;
   }
+ 
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+  }
 </style>

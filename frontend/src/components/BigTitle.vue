@@ -1,7 +1,7 @@
 <template>
   <div class="empty" />
   <div class="intro">
-    <span id="name">赟</span>
+    <span id="name">云 想</span>
     <span id="word">很高兴遇见你</span>
   </div>
   <el-divider />

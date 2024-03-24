@@ -1,11 +1,10 @@
 import axios from "axios";
 
-export default async function getData(info, route, kwargs, totalPage) {
+export default async function getData(info, route, args) {
     try {
         const response = await axios.get(route);
-        info.value = response.data.results;
-        const pages = Math.ceil(response.data.count / 9);
-        totalPage.value = pages; 
+        info.value = response.data;
+        
     } catch (error) {
         console.error("存在错误:", error);
     }

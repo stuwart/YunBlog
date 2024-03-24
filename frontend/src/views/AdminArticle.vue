@@ -6,7 +6,7 @@
 
   <div class="content">
     <BlogCard
-      v-for="item in articles"
+      v-for="item in articles.results"
       :key="item.id"
       :name="item.title"
       :date="item.created"
@@ -19,13 +19,23 @@
       class="smallCard"
     ></BlogCard>
   </div>
+  <div class="demo-pagination-block pagination">
+    <el-pagination
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+      layout="prev, pager, next, jumper"
+      :total="articles.count"
+      :hide-on-single-page="true"
+    />
+  </div>
 </template>
 
 <script setup>
 import BlogCard from "@/components/BlogCard.vue";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import axios from "axios";
 import router from "@/router";
+import getData from "@/utils/getData";
 
 const con = ref({
   width: "500px",
@@ -33,29 +43,21 @@ const con = ref({
   borderRadius: "40px",
 });
 
-const articles = ref([]);
+const articles = ref({});
 
-const fetchArticles = async () => {
-  try {
-    const response = await axios.get("/api/article");
-    const { next, results } = response.data;
-
-    articles.value = results;
-    if (next) {
-      const nextUrlObj = new URL(next);
-      const nextRelativePath = nextUrlObj.pathname + nextUrlObj.search;
-      await fetchAllArticles(nextRelativePath);
-    }
-  } catch (error) {
-    console.error("存在错误：", error);
-  }
-};
+watchEffect(() => {
+  getData(articles, "/api/article/");
+});
 
 const addArticle = () => {
   router.push("/article/edit/0/");
 };
 
-onMounted(fetchArticles);
+const currentPage = ref(1);
+const pageSize = ref(10);
+watchEffect(() => {
+  getData(articles, `/api/article?page=${currentPage.value}`);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -70,5 +72,10 @@ onMounted(fetchArticles);
   .smallCard {
     margin: 20px;
   }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
 }
 </style>
