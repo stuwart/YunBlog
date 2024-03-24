@@ -20,15 +20,15 @@
           <span style="margin-right: 20px">upd: {{ date }}</span>
         </div>
       </template>
-      <div class="text-item">
-        {{ body }}
-      </div>
+      <div class="text-item" v-html="processedBody"></div>
     </el-card>
   </el-space>
 </template>
 
 <script setup>
 import router from "@/router";
+import { marked } from "marked";
+import { computed } from "vue";
 const props = defineProps([
   "name",
   "tags",
@@ -39,6 +39,8 @@ const props = defineProps([
   "opt",
   "con",
 ]);
+const processedBody = computed(() => marked(props.body));
+
 const styleObject = {
   width: props.con.width,
   height: props.con.height,
@@ -75,7 +77,9 @@ const handle = () => {
 }
 .text-item {
   text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  white-space: wrap;
+  overflow: auto;
+  position: relative;
+  bottom: 24px;
 }
 </style>

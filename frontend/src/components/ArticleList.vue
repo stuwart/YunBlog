@@ -33,7 +33,7 @@
 <script setup>
 import BlogCard from "@/components/BlogCard.vue";
 import getData from "@/utils/getData";
-import { ref, watchEffect } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 
 const isSearch = ref(true);
 const totalPage = ref();
@@ -52,6 +52,7 @@ const con = ref({
 watchEffect(() => {
   getData(articles, props.url, kwargs, totalPage);
 });
+
 </script>
 
 <style lang="scss" scoped>
@@ -60,7 +61,7 @@ watchEffect(() => {
   justify-content: center;
   flex-direction: column;
   .card {
-    margin: 10px;
+    margin: 20px;
   }
 }
 </style>

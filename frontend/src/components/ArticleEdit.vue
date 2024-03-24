@@ -79,7 +79,10 @@ const goBack = () => {
   router.go(-1);
 };
 
-const deleteArticle = () => {};
+const deleteArticle = async() => {
+    await axios.delete(url);
+    router.replace("/usercenter/admin-article/");
+};
 
 onMounted(fetData);
 </script>

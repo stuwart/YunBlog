@@ -28,7 +28,7 @@ import axios from "axios";
 import router from "@/router";
 
 const con = ref({
-  width: "600px",
+  width: "500px",
   height: "300px",
   borderRadius: "40px",
 });
@@ -52,7 +52,7 @@ const fetchArticles = async () => {
 };
 
 const addArticle = () => {
-    router.push('/article/edit/0/');
+  router.push("/article/edit/0/");
 };
 
 onMounted(fetchArticles);
@@ -66,7 +66,7 @@ onMounted(fetchArticles);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
+  flex-basis: 40%;
   .smallCard {
     margin: 20px;
   }
