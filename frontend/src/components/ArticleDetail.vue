@@ -20,14 +20,14 @@
           alt="后退"
         />
         <h3>目录</h3>
-        <div v-html="article.toc_html"></div>
+        <div v-html="article.toc_html" class="tocItem"></div>
       </div>
       <el-divider direction="vertical" class="divider" />
       <div class="content">
         <div class="title">{{ article.title }}</div>
         <div class="tag">{{ article.tags }}</div>
         <div class="time">更新于：{{ article.updated }}</div>
-        <div v-html="article.body_html" class="zhengwen"></div>
+        <div v-html="mdBody" class="zhengwen"></div>
         <div class="date">创建于：{{ article.created }}</div>
       </div>
     </div>
@@ -36,30 +36,38 @@
 
 <script setup>
 import router from "@/router";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
+import { marked } from "marked";
 
-const article = ref("");
+const article = ref({});
+
 const route = useRoute();
 const articleId = ref(route.params.id);
 
 const url = "/api/article/" + articleId.value + "/";
+const mdBody = computed(() => {
+  // 确保article.value.body存在，否则返回空字符串
+  return article.value.body ? marked(article.value.body) : "";
+});
 
 const fetchArticleDetail = async () => {
   try {
     const response = await axios.get(url);
     article.value = response.data;
+    // console.log(article.value.body);
+
+    console.log("111", mdBody);
   } catch (error) {
     console.error("存在错误：", error);
   }
 };
 
-onMounted(fetchArticleDetail);
-
 const backTo = () => {
   router.go(-1);
 };
+onMounted(fetchArticleDetail);
 </script>
 
 
@@ -73,7 +81,8 @@ const backTo = () => {
 .date {
   position: relative;
   color: grey;
-  margin-top:100px;
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
 .contain {
   display: flex;
@@ -91,13 +100,17 @@ const backTo = () => {
     .back {
       display: inline-block;
       cursor: pointer;
-      background-color: f4f4f4;
+      background-color: #f4f4f4;
       padding: 10px;
       border-radius: 12px;
       position: relative;
       top: 14px;
       right: 120px;
       color: #590def;
+    }
+    .tocItem{
+      position: relative;
+      right:100px;
     }
   }
   .content {
