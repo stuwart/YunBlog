@@ -49,10 +49,11 @@ const fetchArticles = async () => {
   } catch (error) {
     console.error("存在错误：", error);
   }
-  console.log(articles.value);
 };
 
-const addArticle = () => {};
+const addArticle = () => {
+    router.push('/article/edit/0/');
+};
 
 onMounted(fetchArticles);
 </script>

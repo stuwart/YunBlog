@@ -13,8 +13,10 @@
       <div class="markdownText" v-html="markdownText"></div>
       <el-form-item>
         <div class="button">
-          <el-button round>取消</el-button>
-          <el-button type="danger" round v-if="id != 0">删除</el-button>
+          <el-button round @click="goBack">取消</el-button>
+          <el-button type="danger" round v-if="id != 0" @click="deleteArticle"
+            >删除</el-button
+          >
           <el-button type="primary" round @click="onSubmit">保存</el-button>
         </div>
       </el-form-item>
@@ -24,11 +26,10 @@
 
 <script setup>
 import axios from "axios";
-import {marked} from "marked";
+import { marked } from "marked";
 import { onMounted, ref, reactive, watchEffect } from "vue";
 import { useRoute } from "vue-router";
-
-
+import router from "@/router";
 
 const route = useRoute();
 const id = route.params.id;
@@ -42,13 +43,12 @@ const form = reactive({
 const data = ref({});
 const url = "/api/article/" + id + "/";
 const markdownText = ref("");
-watchEffect(()=>{
-    markdownText.value = marked(form.body);
-})
+watchEffect(() => {
+  markdownText.value = marked(form.body);
+});
 
 const fetData = async () => {
   try {
-    
     if (id != 0) {
       const response = await axios.get(url);
       data.value = response.data;
@@ -61,17 +61,25 @@ const fetData = async () => {
   }
 };
 
-const onSubmit = async() => {
-  try{
-    const response = await axios.patch(url,form);
-    console.log("成功");
-  }catch(error){
-    console.log("存在错误：",error);
+const onSubmit = async () => {
+  try {
+    if (typeof form.tags === "string") form.tags = form.tags.split("，");
+    if (id == 0) {
+      const response = await axios.post("/api/article/", form);
+    } else {
+      const response = await axios.patch(url, form);
+    }
+    router.replace("/usercenter/admin-article/");
+  } catch (error) {
+    console.log("存在错误：", error);
   }
-
-
-
 };
+
+const goBack = () => {
+  router.go(-1);
+};
+
+const deleteArticle = () => {};
 
 onMounted(fetData);
 </script>
